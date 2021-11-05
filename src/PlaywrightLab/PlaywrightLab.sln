@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightLab", "PlaywrightLab\PlaywrightLab.csproj", "{07F36169-C3AB-4AAB-89E3-71CD239F50B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07F36169-C3AB-4AAB-89E3-71CD239F50B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F36169-C3AB-4AAB-89E3-71CD239F50B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F36169-C3AB-4AAB-89E3-71CD239F50B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F36169-C3AB-4AAB-89E3-71CD239F50B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E4FD743-0972-4254-B70D-1193F4F1E8F8}
+	EndGlobalSection
+EndGlobal
