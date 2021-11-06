@@ -10,33 +10,24 @@ namespace PlaywrightLab
         static async Task Main(string[] args)
         {
             using var playwright = await Playwright.CreateAsync();
-            //await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-            //{
-            //    ExecutablePath = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-            //    Channel = "chrome",
-            //    Headless = false
-            //});
-            await using var browser = await playwright.Chromium.LaunchPersistentContextAsync(
-                @"C:\Users\wantgoo\AppData\Local\Google\Chrome\User Data\Profile 2"
-                , new BrowserTypeLaunchPersistentContextOptions
-                {
-                    ExecutablePath = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-                    Channel = "chrome",
-                    Headless = false
-                });
+
+            await using var browser = await playwright.Chromium.LaunchAsync(
+                                          new BrowserTypeLaunchOptions
+                                          {
+                                              ExecutablePath = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                                              Headless = false
+                                          });
 
             var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://playwright.dev/dotnet");
 
-            
+            await page.GotoAsync("http://localhost:5000");
 
-            await page.WaitForTimeoutAsync(10000);
-            var a = await page.ScreenshotAsync(new PageScreenshotOptions { Path = "screenshot.png" });
+            await page.ClickAsync("#mybutton");
 
+            var h1Text = await page.InnerTextAsync("h1");
 
-            await File.WriteAllBytesAsync(@"D:\test.png", a);
-
-            //Console.Read();
+            // Should be True.
+            var result = h1Text.Equals("My Button Clicked!");
         }
     }
 }
