@@ -27,6 +27,9 @@ namespace PlaywrightLab
 
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://playwright.dev/dotnet");
+
+            
+
             await page.WaitForTimeoutAsync(10000);
             var a = await page.ScreenshotAsync(new PageScreenshotOptions { Path = "screenshot.png" });
 
