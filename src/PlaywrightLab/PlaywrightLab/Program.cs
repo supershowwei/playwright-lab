@@ -18,6 +18,11 @@ namespace PlaywrightLab
                                               Headless = false
                                           });
 
+            var context = await browser.NewContextAsync(new BrowserNewContextOptions
+                                                        {
+                                                            
+                                                        });
+
             var page = await browser.NewPageAsync();
 
             await page.GotoAsync("http://localhost:5000");
