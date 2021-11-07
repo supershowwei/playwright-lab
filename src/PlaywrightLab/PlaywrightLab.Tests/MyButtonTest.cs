@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.Playwright;
 using NUnit.Framework;
 
@@ -26,6 +27,28 @@ namespace PlaywrightLab.Tests
             var h1Text = await page.InnerTextAsync("h1");
             
             Assert.AreEqual("My Button Clicked!", h1Text);
+        }
+
+        [Test]
+        public async Task UserAgentShouldContainsChrome95()
+        {
+            var page = await this.context.NewPageAsync();
+
+            await page.GotoAsync("http://localhost:5000/");
+
+            JsonElement? jsonObj;
+
+            jsonObj = await page.EvaluateAsync("() => ({ userAgent: window.navigator.userAgent })");
+
+            Assert.IsTrue(jsonObj.Value.GetProperty("userAgent").GetString().Contains("Chrome/95"));
+
+            jsonObj = await page.EvaluateAsync("() => Promise.resolve({ userAgent: window.navigator.userAgent })");
+
+            Assert.IsTrue(jsonObj.Value.GetProperty("userAgent").GetString().Contains("Chrome/95"));
+
+            jsonObj = await page.EvaluateAsync("async () => await Promise.resolve({ userAgent: window.navigator.userAgent })");
+
+            Assert.IsTrue(jsonObj.Value.GetProperty("userAgent").GetString().Contains("Chrome/95"));
         }
 
         [TearDown]
